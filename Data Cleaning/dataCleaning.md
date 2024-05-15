@@ -3,12 +3,15 @@ by liewwenyen@gmail.com
 
 ## Creating A Temporary Table
 A temporary table is created where the data can be manipulated and restructured without altering the original table. 
-
+```sql 
 CREATE TABLE layoffs_staging
 LIKE layoffs;
 
 INSERT layoffs_staging
 SELECT *
 FROM layoffs;
+```
+### Results
+
 
 ## Removing Duplicates
