@@ -1,5 +1,9 @@
 # Data Cleaning + EDA Project
-
+## Table of Content
+1. [Project Overview](#project-overview)
+2. [Data Source](#data-source)
+3. [Tools](#tools)
+   
 ## Project Overview 
 This is a practice project to clean data and perform exploratory data analysis on a dataset. This is following along "Alex The Analyst" youtube video. 
 
@@ -20,4 +24,8 @@ The primary dataset used for this data cleaning is the [layoffs.csv](https://git
 EDA involving the layoffs, such as:
 - What is ....
 
+## Results/Findings
+
+
+## Reference
   
