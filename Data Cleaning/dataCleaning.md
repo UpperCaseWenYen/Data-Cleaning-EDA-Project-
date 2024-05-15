@@ -180,9 +180,53 @@ FROM layoffs_staging2;
 
 ```
 
+## Handling Null Values
 
+### a. Start from identifying Null Values
 
+```sql
+SELECT *
+FROM layoffs_staging2
+WHERE industry IS NULL
+OR industry = '';
+```
+result:
+# Layoffs Data
 
+| company              | location       | industry   | total_laid_off | percentage_laid_off | date       | stage    | country       | funds_raised_millions   | row_num |
+|----------------------|----------------|------------|----------------|---------------------|------------|----------|---------------|-------------------------|---------|
+| Airbnb               | SF Bay Area    |            | 30             |                     | 2023-03-03 | Post-IPO | United States | 6400                    | 1       |
+| Bally's Interactive  | Providence     |            |                | 0.15                | 2023-01-18 | Post-IPO | United States | 946                     | 1       |
+| Carvana              | Phoenix        |            | 2500           | 0.12                | 2022-05-10 | Post-IPO | United States | 1600                    | 1       |
+| Juul                 | SF Bay Area    |            | 400            | 0.3                 | 2022-11-10 | Unknown  | United States | 1500                    | 1       |
+
+So we can try to populate the record by searching for the same company, as there might be multiple layoffs.
+```sql
+SELECT *
+FROM layoffs_staging2
+WHERE company = 'Airbnb';
+```
+result:
+| company | location    | industry | total_laid_off | percentage_laid_off | date       | stage          | country       | funds_raised_millions   | row_num |
+|---------|-------------|----------|----------------|---------------------|------------|----------------|---------------|-------------------------|---------|
+| Airbnb  | SF Bay Area |          | 30             |                     | 2023-03-03 | Post-IPO       | United States | 6400                    | 1       |
+| Airbnb  | SF Bay Area | Travel   | 1900           | 0.25                | 2020-05-05 | Private Equity | United States | 5400                    | 1       |
+
+*Here we can see that there is also another record of the same company that contains a value for industry.*
+
+so we will now write a query to join itself
+```sql
+-- select first
+SELECT *
+FROM layoffs_staging2 t1
+JOIN layoffs_staging2 t2
+	ON t1.company = t2.company
+	AND t1.location = t2.location 
+WHERE (t1.industry IS NULL OR t1.industry = '')
+AND t2.industry IS NOT NULL;
+
+-- translate to update
+```
 
 
 
