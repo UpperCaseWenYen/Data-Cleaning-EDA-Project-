@@ -225,7 +225,17 @@ JOIN layoffs_staging2 t2
 WHERE (t1.industry IS NULL OR t1.industry = '')
 AND t2.industry IS NOT NULL;
 
+UPDATE layoffs_staging2
+SET industry = NULL
+WHERE industry = '';
+
 -- translate to update
+UPDATE layoffs_staging2 t1
+JOIN layoffs_staging2 t2
+	ON t1.company = t2.company
+SET t1.industry = t2.industry 
+WHERE (t1.industry IS NULL)
+AND t2.industry IS NOT NULL;
 ```
 
 
