@@ -237,15 +237,25 @@ SET t1.industry = t2.industry
 WHERE (t1.industry IS NULL)
 AND t2.industry IS NOT NULL;
 ```
+## 1.Delete Any Columns or Rows
+When running the query to find records that are both null in "total_laid_off" and "percentage_laid_off", it seems that there are number of records that do not have any values in both these columns. When doing EDA later on, these records will not be of use. As such, these records will not serve any value, and will be deleted. 
+
+```sql
+SELECT * 
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL; 
+
+DELETE 
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
+
+ALTER TABLE layoffs_staging2
+DROP COLUMN row_num;
+'''
 
 
 
 
 
-
-
-
-`hi`
-**bold**
-*italic*
-![Picture1](https://github.com/UpperCaseWenYen/Data-Cleaning-EDA-Project-/assets/156862479/eb202dc9-0117-4944-951e-e4991efe114a)
