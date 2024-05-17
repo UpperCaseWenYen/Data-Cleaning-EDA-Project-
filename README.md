@@ -5,7 +5,7 @@
 3. [Tools](#tools)
    
 ## Project Overview 
-This is a practice project to clean data and perform exploratory data analysis on a dataset. This is following along "Alex The Analyst" youtube video. 
+This is a project to clean data and perform exploratory data analysis on a dataset.
 
 ## Data Source 
 The primary dataset used for this data cleaning is the [layoffs.csv](https://github.com/AlexTheAnalyst/MySQL-YouTube-Series/blob/main/layoffs.csv) file, containing information about the layoffs from companies around the world. 
