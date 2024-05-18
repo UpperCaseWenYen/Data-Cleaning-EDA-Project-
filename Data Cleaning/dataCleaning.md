@@ -1,8 +1,7 @@
 # A SQL Data Cleaning Project
 ---
-This is done by liewwenyen@gmail.com
-
-
+An SQL exercise for practicing data cleaning by Liew Wen Yen liewwenyen@gmail.com
+ 
 ## Original Data
 This is a snippet from the data. 
 ```sql
