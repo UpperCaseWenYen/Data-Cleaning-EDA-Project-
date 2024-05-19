@@ -12,7 +12,6 @@ The primary dataset used for this data cleaning is the [layoffs.csv](https://git
 
 ## Tools
 - MYSQL : Data Cleaning, EDA
-- PowerBI : Creating reports
 
 ## Data Cleaning/Preperation 
  1. Remove Duplicates 
